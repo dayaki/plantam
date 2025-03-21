@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <!-- Room outline -->
+  <rect x="30" y="40" width="140" height="120" rx="5" fill="#E0E0E0" stroke="#757575" stroke-width="2" />
+  
+  <!-- Window -->
+  <rect x="40" y="50" width="50" height="60" fill="#B3E5FC" stroke="#0288D1" stroke-width="2" />
+  <line x1="65" y1="50" x2="65" y2="110" stroke="#0288D1" stroke-width="2" />
+  <line x1="40" y1="80" x2="90" y2="80" stroke="#0288D1" stroke-width="2" />
+  
+  <!-- Light zones -->
+  <path d="M40 50 L90 50 L90 110 L40 110 Z" fill="#FFEB3B" fill-opacity="0.3" />
+  <path d="M90 50 L120 70 L120 110 L90 110 Z" fill="#FFA726" fill-opacity="0.3" />
+  <path d="M120 70 L170 70 L170 160 L120 160 Z" fill="#78909C" fill-opacity="0.3" />
+  
+  <!-- Phone scanning -->
+  <rect x="130" y="100" width="20" height="40" rx="2" fill="#424242" />
+  
+  <!-- Light rays -->
+  <path d="M150 110 L170 100" stroke="#FFEB3B" stroke-width="2" stroke-dasharray="2" />
+  <path d="M150 120 L170 120" stroke="#FFA726" stroke-width="2" stroke-dasharray="2" />
+  <path d="M150 130 L170 140" stroke="#78909C" stroke-width="2" stroke-dasharray="2" />
+  
+  <!-- Light indicators -->
+  <circle cx="175" cy="100" r="5" fill="#FFEB3B" />
+  <circle cx="175" cy="120" r="5" fill="#FFA726" />
+  <circle cx="175" cy="140" r="5" fill="#78909C" />
+  
+  <!-- Sun icon -->
+  <circle cx="50" cy="30" r="12" fill="#FFEB3B" />
+  <path d="M50 14 L50 6" stroke="#FFEB3B" stroke-width="2" />
+  <path d="M50 46 L50 54" stroke="#FFEB3B" stroke-width="2" />
+  <path d="M34 30 L26 30" stroke="#FFEB3B" stroke-width="2" />
+  <path d="M66 30 L74 30" stroke="#FFEB3B" stroke-width="2" />
+  <path d="M38 18 L32 12" stroke="#FFEB3B" stroke-width="2" />
+  <path d="M62 42 L68 48" stroke="#FFEB3B" stroke-width="2" />
+  <path d="M38 42 L32 48" stroke="#FFEB3B" stroke-width="2" />
+  <path d="M62 18 L68 12" stroke="#FFEB3B" stroke-width="2" />
+</svg>

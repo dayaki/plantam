@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="80" fill="#E3F2FD" />
+  
+  <!-- Robot head -->
+  <rect x="70" y="60" width="60" height="50" rx="10" fill="#90CAF9" stroke="#1976D2" stroke-width="2" />
+  
+  <!-- Robot eyes -->
+  <circle cx="85" cy="80" r="5" fill="#FFFFFF" />
+  <circle cx="115" cy="80" r="5" fill="#FFFFFF" />
+  <circle cx="85" cy="80" r="2" fill="#1976D2" />
+  <circle cx="115" cy="80" r="2" fill="#1976D2" />
+  
+  <!-- Robot antenna -->
+  <line x1="100" y1="60" x2="100" y2="50" stroke="#1976D2" stroke-width="2" />
+  <circle cx="100" cy="45" r="5" fill="#F44336" />
+  
+  <!-- Robot mouth -->
+  <path d="M85 95 L115 95" stroke="#1976D2" stroke-width="2" />
+  
+  <!-- Plant in robot hand -->
+  <path d="M100 110 L100 140" stroke="#4CAF50" stroke-width="3" />
+  <path d="M100 120 C90 110, 80 115, 85 125" stroke="#4CAF50" stroke-width="3" fill="none" />
+  <path d="M100 120 C110 110, 120 115, 115 125" stroke="#4CAF50" stroke-width="3" fill="none" />
+  <path d="M100 130 C90 120, 80 125, 85 135" stroke="#4CAF50" stroke-width="3" fill="none" />
+  <path d="M100 130 C110 120, 120 125, 115 135" stroke="#4CAF50" stroke-width="3" fill="none" />
+  
+  <!-- Plant pot -->
+  <path d="M90 140 L110 140 L115 160 L85 160" fill="#8D6E63" />
+  
+  <!-- Recommendation list -->
+  <rect x="130" y="70" width="40" height="60" rx="5" fill="#FFFFFF" stroke="#BDBDBD" stroke-width="1" />
+  <line x1="135" y1="85" x2="165" y2="85" stroke="#BDBDBD" stroke-width="1" />
+  <line x1="135" y1="100" x2="165" y2="100" stroke="#BDBDBD" stroke-width="1" />
+  <line x1="135" y1="115" x2="165" y2="115" stroke="#BDBDBD" stroke-width="1" />
+  
+  <!-- Light indicators on list -->
+  <circle cx="140" cy="77" r="3" fill="#FFEB3B" />
+  <circle cx="140" cy="92" r="3" fill="#FFA726" />
+  <circle cx="140" cy="107" r="3" fill="#4CAF50" />
+  
+  <!-- AI thought bubble -->
+  <path d="M60 50 C40 50, 30 70, 50 70 C30 70, 30 90, 50 90 L60 90" fill="#E1F5FE" stroke="#0288D1" stroke-width="1" />
+  <circle cx="45" cy="65" r="2" fill="#0288D1" />
+  <circle cx="40" cy="75" r="2" fill="#0288D1" />
+  <circle cx="45" cy="85" r="2" fill="#0288D1" />
+</svg>

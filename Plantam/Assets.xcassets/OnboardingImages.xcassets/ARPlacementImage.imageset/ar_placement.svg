@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <!-- Background -->
+  <rect x="0" y="0" width="200" height="200" fill="#F5F5F5" opacity="0.3" />
+  
+  <!-- Room floor -->
+  <path d="M20 140 L180 140 L150 180 L50 180 Z" fill="#E0E0E0" stroke="#BDBDBD" stroke-width="1" />
+  
+  <!-- Phone screen -->
+  <rect x="70" y="60" width="60" height="100" rx="5" fill="#424242" />
+  <rect x="75" y="70" width="50" height="80" rx="2" fill="#FFFFFF" />
+  
+  <!-- AR plant on screen -->
+  <path d="M100 130 L100 110" stroke="#4CAF50" stroke-width="2" />
+  <path d="M100 120 C90 110, 85 115, 90 125" stroke="#4CAF50" stroke-width="2" fill="none" />
+  <path d="M100 120 C110 110, 115 115, 110 125" stroke="#4CAF50" stroke-width="2" fill="none" />
+  <path d="M100 115 C90 105, 85 110, 90 120" stroke="#4CAF50" stroke-width="2" fill="none" />
+  <path d="M100 115 C110 105, 115 110, 110 120" stroke="#4CAF50" stroke-width="2" fill="none" />
+  <rect x="95" y="130" width="10" height="10" fill="#8D6E63" />
+  
+  <!-- AR projection lines -->
+  <line x1="75" y1="70" x2="50" y2="50" stroke="#2196F3" stroke-width="1" stroke-dasharray="2" />
+  <line x1="125" y1="70" x2="150" y2="50" stroke="#2196F3" stroke-width="1" stroke-dasharray="2" />
+  <line x1="75" y1="150" x2="50" y2="170" stroke="#2196F3" stroke-width="1" stroke-dasharray="2" />
+  <line x1="125" y1="150" x2="150" y2="170" stroke="#2196F3" stroke-width="1" stroke-dasharray="2" />
+  
+  <!-- AR projected plant -->
+  <path d="M100 170 L100 140" stroke="#4CAF50" stroke-width="3" opacity="0.7" />
+  <path d="M100 160 C85 145, 75 150, 85 165" stroke="#4CAF50" stroke-width="3" fill="none" opacity="0.7" />
+  <path d="M100 160 C115 145, 125 150, 115 165" stroke="#4CAF50" stroke-width="3" fill="none" opacity="0.7" />
+  <path d="M100 150 C85 135, 75 140, 85 155" stroke="#4CAF50" stroke-width="3" fill="none" opacity="0.7" />
+  <path d="M100 150 C115 135, 125 140, 115 155" stroke="#4CAF50" stroke-width="3" fill="none" opacity="0.7" />
+  <rect x="90" y="170" width="20" height="10" fill="#8D6E63" opacity="0.7" />
+  
+  <!-- AR controls -->
+  <circle cx="100" cy="140" r="30" fill="#2196F3" fill-opacity="0.2" stroke="#2196F3" stroke-width="1" stroke-dasharray="3" />
+  
+  <!-- Hand holding phone -->
+  <path d="M60 160 C40 170, 50 190, 70 180" fill="#FFCCBC" stroke="#FF5722" stroke-width="1" />
+  <path d="M70 180 L70 160 L130 160 L130 180" fill="#FFCCBC" stroke="#FF5722" stroke-width="1" />
+  
+  <!-- AR indicator -->
+  <text x="100" y="40" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#673AB7">AR VIEW</text>
+  <path d="M85 45 L115 45" stroke="#673AB7" stroke-width="1" />
+</svg>

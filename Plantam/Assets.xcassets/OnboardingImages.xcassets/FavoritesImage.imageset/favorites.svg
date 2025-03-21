@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <!-- Background -->
+  <rect x="30" y="30" width="140" height="140" rx="10" fill="#FFFFFF" stroke="#BDBDBD" stroke-width="2" />
+  
+  <!-- Header -->
+  <rect x="30" y="30" width="140" height="30" rx="10" fill="#E8F5E9" stroke="#BDBDBD" stroke-width="2" />
+  <text x="60" y="50" font-family="Arial" font-size="14" font-weight="bold" fill="#4CAF50">My Favorites</text>
+  
+  <!-- Plant Item 1 -->
+  <rect x="40" y="70" width="120" height="30" rx="5" fill="#F5F5F5" />
+  <circle cx="55" cy="85" r="10" fill="#4CAF50" />
+  <path d="M55 85 L55 75" stroke="#FFFFFF" stroke-width="1" />
+  <path d="M55 80 C50 75, 45 78, 50 83" stroke="#FFFFFF" stroke-width="1" fill="none" />
+  <path d="M55 80 C60 75, 65 78, 60 83" stroke="#FFFFFF" stroke-width="1" fill="none" />
+  <text x="70" y="90" font-family="Arial" font-size="10" fill="#212121">Snake Plant</text>
+  <path d="M145 85 L140 80 L135 85 L140 90 Z" fill="#F44336" />
+  
+  <!-- Plant Item 2 -->
+  <rect x="40" y="110" width="120" height="30" rx="5" fill="#

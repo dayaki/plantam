@@ -47,3 +47,38 @@ The camera functionality is now fully working and provides a solid foundation fo
 
 Next Steps:
 - Proceed to Step 3: Implement Room Lighting Analysis
+
+### Step 3: Implement Room Lighting Analysis (Completed)
+
+In this step, we implemented the room lighting analysis functionality to analyze photos and determine optimal plant placement:
+
+- Created a `LightingAnalyzer` class that provides comprehensive lighting analysis:
+  - Calculates overall brightness levels of images using Core Image filters
+  - Identifies different lighting zones within a single image using a grid-based approach
+  - Classifies lighting conditions into three categories: Low Light, Medium Light, and High Light
+  - Generates visual overlays to highlight different lighting zones with color coding
+  - Provides percentage breakdowns of lighting conditions across the room
+
+- Implemented a `LightingAnalysisView` to display analysis results:
+  - Shows the original image with an option to toggle visualization of lighting zones
+  - Displays overall light level with appropriate icon and description
+  - Shows light distribution with percentage bars for each light level
+  - Provides initial plant recommendations based on the dominant light level
+  - Includes placement tips for optimal plant positioning
+
+- Integrated the lighting analysis into the main app flow:
+  - Added an "Analyze Room Lighting" button after photo capture
+  - Implemented background processing to avoid UI freezing during analysis
+  - Created a smooth transition from photo capture to analysis results
+  - Added loading indicators during the analysis process
+
+Key technical implementations:
+- Used Core Image filters (CIColorControls, CIAreaAverage) for brightness analysis
+- Implemented custom UIGraphics drawing for zone visualization
+- Created an enum-based system for light levels with associated metadata
+- Used SwiftUI's ProgressView to show light distribution percentages
+
+The lighting analysis functionality now provides users with detailed information about their room's lighting conditions, setting the foundation for personalized plant recommendations in the next step.
+
+Next Steps:
+- Proceed to Step 4: Implement OpenAI-Powered Plant Recommendations

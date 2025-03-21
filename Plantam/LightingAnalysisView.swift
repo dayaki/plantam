@@ -8,6 +8,7 @@ struct LightingAnalysisView: View {
     
     @Environment(\.dismiss) private var dismiss
     @State private var showingVisualization = false
+    @State private var showingRecommendations = false
     
     var body: some View {
         NavigationView {
@@ -122,10 +123,22 @@ struct LightingAnalysisView: View {
                             Text(dominantLevel.description)
                                 .font(.body)
                             
-                            Text("In the next step, we'll provide personalized plant recommendations using AI.")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
+                            Button(action: {
+                                // Present the plant recommendation view
+                                showingRecommendations = true
+                            }) {
+                                HStack {
+                                    Image(systemName: "wand.and.stars")
+                                    Text("Get AI Plant Recommendations")
+                                }
+                                .font(.subheadline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.green)
+                                .cornerRadius(8)
                                 .padding(.top, 8)
+                            }
                         }
                         .padding()
                         .background(Color.green.opacity(0.1))

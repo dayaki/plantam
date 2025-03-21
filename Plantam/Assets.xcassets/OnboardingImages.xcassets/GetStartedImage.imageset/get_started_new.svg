@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="80" fill="#E8F5E9" />
+  
+  <!-- Plant pot -->
+  <path d="M85 140 L115 140 L125 180 L75 180 Z" fill="#8D6E63" />
+  
+  <!-- Growing plant animation -->
+  <path d="M100 140 L100 100" stroke="#4CAF50" stroke-width="4" />
+  
+  <!-- Leaves -->
+  <path d="M100 120 C85 110, 75 115, 85 125" stroke="#4CAF50" stroke-width="4" fill="none" />
+  <path d="M100 120 C115 110, 125 115, 115 125" stroke="#4CAF50" stroke-width="4" fill="none" />
+  <path d="M100 110 C85 100, 75 95, 85 105" stroke="#4CAF50" stroke-width="4" fill="none" />
+  <path d="M100 110 C115 100, 125 95, 115 105" stroke="#4CAF50" stroke-width="4" fill="none" />
+  
+  <!-- Flower -->
+  <circle cx="100" cy="90" r="10" fill="#FF9800" />
+  <circle cx="93" cy="83" r="5" fill="#FFEB3B" />
+  <circle cx="107" cy="83" r="5" fill="#FFEB3B" />
+  <circle cx="93" cy="97" r="5" fill="#FFEB3B" />
+  <circle cx="107" cy="97" r="5" fill="#FFEB3B" />
+  
+  <!-- Let's Go text -->
+  <text x="100" y="50" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#4CAF50">Let's Go!</text>
+  
+  <!-- Sparkles -->
+  <path d="M60 70 L65 75 L60 80 L55 75 Z" fill="#FFEB3B" />
+  <path d="M140 70 L145 75 L140 80 L135 75 Z" fill="#FFEB3B" />
+  <path d="M60 130 L65 135 L60 140 L55 135 Z" fill="#FFEB3B" />
+  <path d="M140 130 L145 135 L140 140 L135 135 Z" fill="#FFEB3B" />
+</svg>
