@@ -106,7 +106,7 @@ struct OnboardingView: View {
                     )
                     .tag(5)
                 }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
                 .animation(.easeInOut, value: currentTab)
                 .transition(.slide)
@@ -151,46 +151,58 @@ struct OnboardingView: View {
                 
                 // Icon with animation
                 if useCustomImage && !customImageName.isEmpty {
-                    Image(customImageName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 140, height: 140)
-                        .padding()
-                        .background(
-                            Circle()
-                                .fill(backgroundColor)
-                                .frame(width: 200, height: 200)
-                        )
-                        .scaleEffect(isAnimating ? 1.1 : 0.9)
-                        .animation(
-                            Animation.easeInOut(duration: 1.5)
-                                .repeatForever(autoreverses: true),
-                            value: isAnimating
-                        )
-                        .onAppear {
-                            isAnimating = true
-                        }
+                    ZStack {
+                        Circle()
+                            .fill(backgroundColor)
+                            .frame(width: 200, height: 200)
+                            .scaleEffect(isAnimating ? 1.15 : 0.95)
+                            .animation(
+                                Animation.easeInOut(duration: 1.5)
+                                    .repeatForever(autoreverses: true),
+                                value: isAnimating
+                            )
+                        
+                        Image(customImageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 140, height: 140)
+                            .scaleEffect(isAnimating ? 1.1 : 0.9)
+                            .animation(
+                                Animation.easeInOut(duration: 1.5)
+                                    .repeatForever(autoreverses: true),
+                                value: isAnimating
+                            )
+                    }
+                    .onAppear {
+                        isAnimating = true
+                    }
                 } else {
-                    Image(systemName: imageName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100)
-                        .foregroundColor(.green)
-                        .padding()
-                        .background(
-                            Circle()
-                                .fill(backgroundColor)
-                                .frame(width: 180, height: 180)
-                        )
-                        .scaleEffect(isAnimating ? 1.1 : 0.9)
-                        .animation(
-                            Animation.easeInOut(duration: 1.5)
-                                .repeatForever(autoreverses: true),
-                            value: isAnimating
-                        )
-                        .onAppear {
-                            isAnimating = true
-                        }
+                    ZStack {
+                        Circle()
+                            .fill(backgroundColor)
+                            .frame(width: 180, height: 180)
+                            .scaleEffect(isAnimating ? 1.15 : 0.95)
+                            .animation(
+                                Animation.easeInOut(duration: 1.5)
+                                    .repeatForever(autoreverses: true),
+                                value: isAnimating
+                            )
+                        
+                        Image(systemName: imageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100)
+                            .foregroundColor(.green)
+                            .scaleEffect(isAnimating ? 1.1 : 0.9)
+                            .animation(
+                                Animation.easeInOut(duration: 1.5)
+                                    .repeatForever(autoreverses: true),
+                                value: isAnimating
+                            )
+                    }
+                    .onAppear {
+                        isAnimating = true
+                    }
                 }
                 
                 // Title
