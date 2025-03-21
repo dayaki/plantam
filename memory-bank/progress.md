@@ -81,4 +81,38 @@ Key technical implementations:
 The lighting analysis functionality now provides users with detailed information about their room's lighting conditions, setting the foundation for personalized plant recommendations in the next step.
 
 Next Steps:
-- Proceed to Step 4: Implement OpenAI-Powered Plant Recommendations
+- Proceed to Step 4: OpenAI-Powered Plant Recommendations
+
+### Step 4: OpenAI-Powered Plant Recommendations (Completed)
+
+In this step, we implemented the OpenAI integration to provide personalized plant recommendations based on room lighting conditions:
+
+- Created an `OpenAIService` class that handles all OpenAI API interactions:
+  - Securely manages API key access from environment variables or Info.plist
+  - Sends room images to OpenAI's Vision API (GPT-4 Vision) for analysis
+  - Crafts detailed prompts that include lighting conditions and request specific plant information
+  - Parses JSON responses into structured Swift objects
+  - Implements robust error handling with fallback recommendations when API is unavailable
+
+- Developed a `PlantRecommendationView` to display AI-generated recommendations:
+  - Shows the analyzed room image with lighting level indicator
+  - Displays loading state with progress indicators during API calls
+  - Presents plant recommendations in visually appealing cards
+  - Includes detailed information for each plant (common name, scientific name, care instructions, suitability)
+  - Handles error states gracefully with fallback recommendations
+
+- Integrated the recommendation flow into the main app:
+  - Added a "Get AI Plant Recommendations" button in the lighting analysis view
+  - Created a seamless transition from lighting analysis to plant recommendations
+  - Ensured proper state management throughout the recommendation process
+
+Key technical implementations:
+- Used OpenAI's Swift package for API integration
+- Implemented structured JSON parsing with Codable protocol
+- Created a fallback system with pre-defined recommendations for each light level
+- Designed an elegant UI for displaying plant recommendations
+
+The OpenAI-powered plant recommendations feature now provides users with personalized plant suggestions based on their specific room lighting conditions, completing a core functionality of the app.
+
+Next Steps:
+- Proceed to Step 5: Implement AR-Based Plant Visualization

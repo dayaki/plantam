@@ -32,6 +32,7 @@ The main view of the application that includes:
 - Display area for the captured image
 - Camera functionality integrated directly via UIViewControllerRepresentable
 - Custom camera UI controls and interface
+- Integration with lighting analysis functionality
 
 The ContentView.swift file now integrates multiple components:
 
@@ -39,6 +40,7 @@ The ContentView.swift file now integrates multiple components:
    - State management for captured images (`@State private var capturedImage: UIImage?`)
    - Navigation structure and conditional UI based on capture state
    - Sheet presentation for the camera interface
+   - Room lighting analysis functionality with loading indicators
 
 2. **CustomCameraRepresentable**: A `UIViewControllerRepresentable` wrapper that bridges SwiftUI and UIKit:
    - Uses the Coordinator pattern to handle delegate callbacks
@@ -51,6 +53,39 @@ The ContentView.swift file now integrates multiple components:
    - Manages UI elements (capture button, flash toggle, cancel button)
    - Handles photo capture and processing
    - Uses proper delegate pattern for communicating back to SwiftUI
+
+### LightingAnalyzer.swift
+Provides comprehensive lighting analysis functionality:
+- Calculates overall brightness levels using Core Image filters
+- Identifies different lighting zones within images using a grid-based approach
+- Classifies lighting conditions into Low, Medium, and High light categories
+- Generates visual overlays to highlight different lighting zones
+- Provides percentage breakdowns of lighting conditions
+
+### LightingAnalysisView.swift
+Displays the results of the lighting analysis:
+- Shows the original image with an option to toggle visualization of lighting zones
+- Displays overall light level with appropriate icon and description
+- Shows light distribution with percentage bars for each light level
+- Provides a button to get AI-powered plant recommendations
+- Includes placement tips for optimal plant positioning
+
+### OpenAIService.swift
+Handles all interactions with the OpenAI API:
+- Manages secure API key access from environment variables or Info.plist
+- Sends room images to OpenAI's Vision API (GPT-4 Vision) for analysis
+- Crafts detailed prompts that include lighting conditions
+- Parses JSON responses into structured Swift objects using Codable
+- Implements error handling with fallback recommendations
+- Defines data models for plant recommendations (PlantRecommendations, PlantRecommendation)
+
+### PlantRecommendationView.swift
+Displays AI-generated plant recommendations:
+- Shows the analyzed room image with lighting level indicator
+- Displays loading state with progress indicators during API calls
+- Presents plant recommendations in visually appealing cards
+- Includes detailed information for each plant (common name, scientific name, care instructions, suitability)
+- Handles error states gracefully with fallback recommendations
 
 ### Info.plist
 Configuration file that includes essential app metadata and permission declarations:

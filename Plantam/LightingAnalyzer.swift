@@ -159,7 +159,8 @@ class LightingAnalyzer {
                       colorSpace: nil)
         
         // Average of RGB components (ignoring alpha)
-        let brightness = Float(bitmap[0] + bitmap[1] + bitmap[2]) / 3.0
+        // Convert each UInt8 to Float before addition to prevent overflow
+        let brightness = (Float(bitmap[0]) + Float(bitmap[1]) + Float(bitmap[2])) / 3.0
         
         return brightness
     }
