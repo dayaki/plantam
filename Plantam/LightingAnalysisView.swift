@@ -15,7 +15,10 @@ struct LightingAnalysisView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     // Image with visualization toggle
                     ZStack(alignment: .topTrailing) {
-                        if showingVisualization, let visualizationImage = LightingAnalyzer().generateZoneVisualization(image: image, zones: zones) {
+                        // if showingVisualization, let visualizationImage = LightingAnalyzer().generateZoneVisualization(image: image, zones: zones) {
+                        if showingVisualization {
+    let visualizationImage = LightingAnalyzer().generateZoneVisualization(image: image, zones: zones)
+
                             Image(uiImage: visualizationImage)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)

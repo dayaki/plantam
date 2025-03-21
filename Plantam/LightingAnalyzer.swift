@@ -136,16 +136,17 @@ class LightingAnalyzer {
         guard let grayscaleImage = grayscaleFilter.outputImage else { return 0 }
         
         // Calculate average brightness
-        let extentVector = CIVector(
-            x: grayscaleImage.extent.origin.x,
-            y: grayscaleImage.extent.origin.y,
-            z: grayscaleImage.extent.size.width,
-            w: grayscaleImage.extent.size.height
-        )
+        // let extentVector = CIVector(
+        //     x: grayscaleImage.extent.origin.x,
+        //     y: grayscaleImage.extent.origin.y,
+        //     z: grayscaleImage.extent.size.width,
+        //     w: grayscaleImage.extent.size.height
+        // )
+        let extentRect = grayscaleImage.extent
         
         let averageFilter = CIFilter.areaAverage()
         averageFilter.inputImage = grayscaleImage
-        averageFilter.extent = extentVector
+        averageFilter.extent = extentRect
         
         guard let outputImage = averageFilter.outputImage else { return 0 }
         
