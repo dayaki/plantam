@@ -5,6 +5,11 @@ import AVFoundation
 struct ContentView: View {
     @State private var capturedImage: UIImage?
     @State private var showingCameraSheet = false
+    @State private var showingAnalysisSheet = false
+    @State private var isAnalyzing = false
+    @State private var lightingZones: [LightingZone] = []
+    @State private var lightingSummary: [LightLevel: Double] = [:]
+    @State private var overallLightLevel: LightLevel = .medium
     
     var body: some View {
         NavigationView {
@@ -16,6 +21,8 @@ struct ContentView: View {
                         
                         Button(action: {
                             capturedImage = nil
+                            lightingZones = []
+                            lightingSummary = [:]
                         }) {
                             Image(systemName: "xmark")
                                 .font(.system(size: 22))
@@ -89,12 +96,17 @@ struct ContentView: View {
                 
                 if capturedImage != nil {
                     Button(action: {
-                        // This would be replaced with actual analysis functionality in Step 3
-                        print("Analyzing image lighting...")
+                        analyzeRoomLighting()
                     }) {
                         HStack {
-                            Image(systemName: "light.max")
-                            Text("Analyze Room Lighting")
+                            if isAnalyzing {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                    .padding(.trailing, 5)
+                            } else {
+                                Image(systemName: "light.max")
+                            }
+                            Text(isAnalyzing ? "Analyzing..." : "Analyze Room Lighting")
                         }
                         .font(.headline)
                         .foregroundStyle(.white)
@@ -105,6 +117,7 @@ struct ContentView: View {
                         .padding(.horizontal)
                         .padding(.top, 8)
                     }
+                    .disabled(isAnalyzing)
                 }
             }
             .navigationTitle("Plantam")
@@ -114,6 +127,45 @@ struct ContentView: View {
                     .edgesIgnoringSafeArea(.all)
                     .presentationDetents([.height(700), .large])
                     .presentationDragIndicator(.visible)
+            }
+            .sheet(isPresented: $showingAnalysisSheet) {
+                if let image = capturedImage {
+                    LightingAnalysisView(
+                        image: image,
+                        zones: lightingZones,
+                        summary: lightingSummary,
+                        overallLightLevel: overallLightLevel
+                    )
+                }
+            }
+        }
+    }
+    
+    private func analyzeRoomLighting() {
+        guard let image = capturedImage else { return }
+        
+        isAnalyzing = true
+        
+        // Perform analysis in background thread
+        DispatchQueue.global(qos: .userInitiated).async {
+            let analyzer = LightingAnalyzer()
+            
+            // Analyze overall lighting
+            let overallLevel = analyzer.analyzeOverallLighting(image: image)
+            
+            // Identify lighting zones
+            let zones = analyzer.identifyLightingZones(image: image)
+            
+            // Get lighting summary
+            let summary = analyzer.getLightingSummary(zones: zones)
+            
+            // Update UI on main thread
+            DispatchQueue.main.async {
+                self.overallLightLevel = overallLevel
+                self.lightingZones = zones
+                self.lightingSummary = summary
+                self.isAnalyzing = false
+                self.showingAnalysisSheet = true
             }
         }
     }
