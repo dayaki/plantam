@@ -1,4 +1,6 @@
 import SwiftUI
+import UIKit
+import Foundation
 
 struct PlantRecommendationView: View {
     let image: UIImage

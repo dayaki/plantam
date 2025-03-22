@@ -15,6 +15,9 @@
 		6432BFA32D8D0959004B2252 /* LightingAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6432BFA22D8D0959004B2252 /* LightingAnalysisView.swift */; };
 		6432BFA62D8D89F0004B2252 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6432BFA52D8D89F0004B2252 /* UserDefaultsManager.swift */; };
 		6432BFA72D8D89F0004B2252 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6432BFA42D8D89F0004B2252 /* OnboardingView.swift */; };
+		64603B302D8E0FFD00AEE582 /* PlantRecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64603B2F2D8E0FFD00AEE582 /* PlantRecommendationView.swift */; };
+		648A61DE2D8EA765004DC873 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 648A61DD2D8EA765004DC873 /* OpenAI */; };
+		64FD10042D8EA3BF00E44580 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FD10032D8EA3BF00E44580 /* OpenAIService.swift */; };
 		8A1234561234567800000001 /* PlantamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1234561234567800000010 /* PlantamApp.swift */; };
 		8A1234561234567800000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1234561234567800000011 /* ContentView.swift */; };
 		8A1234561234567800000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A1234561234567800000012 /* Assets.xcassets */; };
@@ -30,6 +33,9 @@
 		6432BFA22D8D0959004B2252 /* LightingAnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LightingAnalysisView.swift; path = Plantam/LightingAnalysisView.swift; sourceTree = "<group>"; };
 		6432BFA42D8D89F0004B2252 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = Plantam/OnboardingView.swift; sourceTree = "<group>"; };
 		6432BFA52D8D89F0004B2252 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsManager.swift; path = Plantam/UserDefaultsManager.swift; sourceTree = "<group>"; };
+		64603B2F2D8E0FFD00AEE582 /* PlantRecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlantRecommendationView.swift; path = Plantam/PlantRecommendationView.swift; sourceTree = "<group>"; };
+		64603B342D8E1B8E00AEE582 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		64FD10032D8EA3BF00E44580 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		8A1234561234567800000000 /* Plantam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plantam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A1234561234567800000010 /* PlantamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantamApp.swift; sourceTree = "<group>"; };
 		8A1234561234567800000011 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -43,15 +49,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				648A61DE2D8EA765004DC873 /* OpenAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		64603B332D8E1B8E00AEE582 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64603B342D8E1B8E00AEE582 /* OpenAL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8A12345612345678000000B0 = {
 			isa = PBXGroup;
 			children = (
+				64603B2F2D8E0FFD00AEE582 /* PlantRecommendationView.swift */,
 				6432BFA42D8D89F0004B2252 /* OnboardingView.swift */,
 				6432BFA52D8D89F0004B2252 /* UserDefaultsManager.swift */,
 				6432BFA22D8D0959004B2252 /* LightingAnalysisView.swift */,
@@ -61,6 +77,7 @@
 				6432BF972D8CFA41004B2252 /* CameraPreviewView.swift */,
 				6432BF982D8CFA41004B2252 /* CameraView.swift */,
 				8A12345612345678000000B1 /* Plantam */,
+				64603B332D8E1B8E00AEE582 /* Frameworks */,
 				8A12345612345678000000B2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,6 +85,7 @@
 		8A12345612345678000000B1 /* Plantam */ = {
 			isa = PBXGroup;
 			children = (
+				64FD10032D8EA3BF00E44580 /* OpenAIService.swift */,
 				8A1234561234567800000010 /* PlantamApp.swift */,
 				8A1234561234567800000011 /* ContentView.swift */,
 				8A1234561234567800000012 /* Assets.xcassets */,
@@ -110,6 +128,7 @@
 			);
 			name = Plantam;
 			packageProductDependencies = (
+				648A61DD2D8EA765004DC873 /* OpenAI */,
 			);
 			productName = Plantam;
 			productReference = 8A1234561234567800000000 /* Plantam.app */;
@@ -140,6 +159,7 @@
 			);
 			mainGroup = 8A12345612345678000000B0;
 			packageReferences = (
+				648A61DC2D8EA765004DC873 /* XCRemoteSwiftPackageReference "OpenAI" */,
 			);
 			productRefGroup = 8A12345612345678000000B2 /* Products */;
 			projectDirPath = "";
@@ -169,10 +189,12 @@
 			files = (
 				8A1234561234567800000002 /* ContentView.swift in Sources */,
 				6432BFA12D8D08FC004B2252 /* LightingAnalyzer.swift in Sources */,
+				64603B302D8E0FFD00AEE582 /* PlantRecommendationView.swift in Sources */,
 				6432BFA32D8D0959004B2252 /* LightingAnalysisView.swift in Sources */,
 				6432BF992D8CFA41004B2252 /* CameraPreviewView.swift in Sources */,
 				6432BF9A2D8CFA41004B2252 /* CameraView.swift in Sources */,
 				6432BFA62D8D89F0004B2252 /* UserDefaultsManager.swift in Sources */,
+				64FD10042D8EA3BF00E44580 /* OpenAIService.swift in Sources */,
 				6432BFA72D8D89F0004B2252 /* OnboardingView.swift in Sources */,
 				6432BF9B2D8CFA41004B2252 /* CameraManager.swift in Sources */,
 				6432BF9D2D8CFD54004B2252 /* ImagePickerView.swift in Sources */,
@@ -386,6 +408,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		648A61DC2D8EA765004DC873 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		648A61DD2D8EA765004DC873 /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 648A61DC2D8EA765004DC873 /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8A12345612345678000000D0 /* Project object */;
 }

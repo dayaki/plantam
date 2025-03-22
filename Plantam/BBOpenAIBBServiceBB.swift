@@ -2,6 +2,9 @@ import Foundation
 import OpenAI
 import UIKit
 
+// Import LightLevel from the other file by referring to it directly
+// No need to redeclare the enum
+
 class OpenAIService {
     private let client: OpenAI
     
@@ -9,11 +12,15 @@ class OpenAIService {
     
     init() {
         // Initialize with API key from environment
-        guard let apiKey = ProcessInfo.processInfo.environment["OPENAI_API_KEY"] ?? Bundle.main.infoDictionary?["OPENAI_API_KEY"] as? String else {
+        let apiKey = ProcessInfo.processInfo.environment["OPENAI_API_KEY"] ??
+                     Bundle.main.infoDictionary?["OPENAI_API_KEY"] as? String ?? ""
+        
+        if apiKey.isEmpty {
             fatalError("OpenAI API key not found. Please set OPENAI_API_KEY in environment or Info.plist")
         }
         
-        self.client = OpenAI(apiToken: apiKey)
+        let configuration = OpenAI.Configuration(token: apiKey)
+        self.client = OpenAI(configuration: configuration)
     }
     
     // MARK: - Public Methods
@@ -30,7 +37,7 @@ class OpenAIService {
     ) {
         // Convert image to base64
         guard let imageData = image.jpegData(compressionQuality: 0.7),
-              let base64Image = imageData.base64EncodedString().addingPercentEncoding(withAllowedCharacters: .alphanumerics) else {
+              let base64String = imageData.base64EncodedString() as String? else {
             completion(.failure(OpenAIServiceError.imageEncodingFailed))
             return
         }
@@ -39,31 +46,39 @@ class OpenAIService {
         let prompt = createPrompt(for: lightLevel)
         
         // Create the chat request
-        let query = ChatQuery(
-            model: .gpt4_vision_preview,
-            messages: [
-                .init(role: .user, content: [
-                    .text(prompt),
-                    .imageUrl("data:image/jpeg;base64,\(base64Image)")
-                ])
-            ],
-            maxTokens: 1000
+        let imgParam = ChatQuery.ChatCompletionMessageParam.ChatCompletionUserMessageParam(content: 
+            .vision([
+                .text(prompt),
+                .chatCompletionContentPartImageParam(.init(imageUrl: .init(url: base64String, detail: .high)))
+            ])
         )
+        
+//        let query = ChatQuery(
+//            messages: [.user(imgParam)],
+//            model: "gpt-4-vision-preview",
+//            maxTokens: 500
+//        )
+        let query = ChatQuery(messages: [
+            .user(imgParam),
+            .user(.init(content: .string(prompt)))
+        ],
+                              model: .gpt4_o,
+                              maxTokens: 500)
         
         // Send the request
         client.chats(query: query) { [weak self] result in
-            guard self != nil else { return }
+            guard let self = self else { return }
             
             switch result {
             case .success(let response):
                 if let content = response.choices.first?.message.content {
                     do {
                         // Parse the response
-                        let recommendations = try self?.parseRecommendations(from: content)
-                        completion(.success(recommendations ?? self?.fallbackRecommendations(for: lightLevel) ?? PlantRecommendations()))
+                        let recommendations = try self.parseRecommendations(from: content)
+                        completion(.success(recommendations))
                     } catch {
                         print("Error parsing OpenAI response: \(error)")
-                        completion(.success(self?.fallbackRecommendations(for: lightLevel) ?? PlantRecommendations()))
+                        completion(.success(self.fallbackRecommendations(for: lightLevel)))
                     }
                 } else {
                     completion(.failure(OpenAIServiceError.emptyResponse))
@@ -79,10 +94,21 @@ class OpenAIService {
     // MARK: - Private Methods
     
     private func createPrompt(for lightLevel: LightLevel) -> String {
-        return """
-        I need plant recommendations for a room with \(lightLevel.rawValue) conditions.
+        // Convert the LightLevel enum to a string format appropriate for the prompt
+        let lightLevelString: String
+        switch lightLevel {
+        case .low:
+            lightLevelString = "low light"
+        case .medium:
+            lightLevelString = "medium light"
+        case .high:
+            lightLevelString = "bright light"
+        }
         
-        Based on the image and the lighting level (\(lightLevel.rawValue)), please recommend 5 plants that would thrive in this environment.
+        return """
+        I need plant recommendations for a room with \(lightLevelString) conditions.
+        
+        Based on the image and the lighting level (\(lightLevelString)), please recommend 5 plants that would thrive in this environment.
         
         For each plant, provide:
         1. Common name
@@ -143,7 +169,10 @@ class OpenAIService {
         }
     }
     
-    private func fallbackRecommendations(for lightLevel: LightLevel) -> PlantRecommendations {
+    /// Provides fallback plant recommendations when the API call fails
+    /// - Parameter lightLevel: The detected light level
+    /// - Returns: Default plant recommendations for the given light level
+    func fallbackRecommendations(for lightLevel: LightLevel) -> PlantRecommendations {
         // Provide fallback recommendations if API fails
         var recommendations = PlantRecommendations()
         

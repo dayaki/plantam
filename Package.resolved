@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "OpenAI",
+        "repositoryURL": "https://github.com/MacPaw/OpenAI.git",
+        "state": {
+          "branch": null,
+          "revision": "1a7a5bae571b5ff096c8b2c1062577248214f52e",
+          "version": "0.3.7"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

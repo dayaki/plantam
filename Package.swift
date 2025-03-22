@@ -1,10 +1,10 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.7
 import PackageDescription
 
 let package = Package(
     name: "Plantam",
     platforms: [
-        .iOS(.v15)
+        .iOS(.v16)
     ],
     products: [
         .library(
@@ -12,16 +12,20 @@ let package = Package(
             targets: ["Plantam"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/openai/openai-swift.git", from: "1.0.0"),
+        .package(url: "https://github.com/MacPaw/OpenAI.git", from: "0.3.7"),
     ],
     targets: [
         .target(
             name: "Plantam",
             dependencies: [
-                .product(name: "OpenAI", package: "openai-swift"),
+                .product(name: "OpenAI", package: "OpenAI"),
             ]),
         .testTarget(
             name: "PlantamTests",
-            dependencies: ["Plantam"]),
+            dependencies: [
+                "Plantam",
+                .product(name: "OpenAI", package: "OpenAI"),
+            ]
+        ),
     ]
 )
